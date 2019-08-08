@@ -1,29 +1,16 @@
-import React, { Component } from "react";
+import React from 'react';
 
-import GlobalStyle from "./styles/global";
+import GlobalStyle from './styles/global';
 
-import api from "./services/api";
+import Routes from './routes';
 
-class App extends Component {
-  state = {
-    cards: []
-  };
-
-  async componentDidMount() {
-    const playerTag = "yuc8gj";
-    const response = await api.get(`/player/${playerTag}`);
-
-    console.log(response.data);
-  }
-
-  render() {
-    return (
-      <>
-        <h1>Teste</h1>
-        <GlobalStyle />
-      </>
-    );
-  }
+function App() {
+  return (
+    <>
+      <Routes />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
