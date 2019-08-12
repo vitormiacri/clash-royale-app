@@ -13,14 +13,15 @@ export default createGlobalStyle`
   }
 
   body {
+    width: 100%;
+    height: 100%;
     background: #052746 url(${background}) no-repeat center top;
     /* background: #052746; */
     -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {
-    font-size: 16px Roboto, sans-serif;
-    
+    font-size: 1rem Roboto, sans-serif;    
   }
 
   button {
@@ -30,7 +31,7 @@ export default createGlobalStyle`
   #root {
     width: 100%;
     max-width: 1020px;
-    margin: 280px auto;
+    margin: 280px auto 0 auto;
     padding: 0 20px;
     background: #fff;
     border-radius: 5px;

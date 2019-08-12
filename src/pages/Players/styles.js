@@ -17,8 +17,8 @@ export const InputSearch = styled.input.attrs(props => ({
   disabled: props.loading,
 }))`
   color: #999;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 0.9rem;
+  line-height: 16px;
   border: none;
   border-bottom: 1px solid #999;
   padding: 10px;
@@ -284,4 +284,93 @@ export const Empty = styled.div`
   font-size: 44px;
   color: #001919;
   font-weight: bold;
+`;
+
+export const TopPlayerList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 650px;
+  margin-bottom: 20px;
+
+  strong {
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #001919;
+  }
+`;
+export const PlayerItem = styled.button.attrs({
+  type: 'button',
+})`
+  width: 100%;
+  margin: 10px 0;
+  padding: 30px 0;
+  background: #0e67c2;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    transition: all 0.2s;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .name {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  .tag {
+    font-size: 0.8rem;
+  }
+
+  .level {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .trophies {
+    display: flex;
+    align-items: center;
+
+    color: #fff;
+    font-size: 1.4rem;
+
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+`;
+export const BackButton = styled.button.attrs(props => ({
+  type: 'button',
+  disabled: props.loading,
+}))`
+  padding: 10px 15px;
+  background: #0e67c2;
+  border-radius: 4px;
+  cursor: pointer;
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  &:hover {
+    background: rgba(14, 118, 194, 0.8);
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  strong {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+  }
 `;
