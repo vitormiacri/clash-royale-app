@@ -11,7 +11,7 @@ export const PlayerSearch = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 30px 0;
+  margin: 20px 0;
 `;
 export const InputSearch = styled.input.attrs(props => ({
   disabled: props.loading,

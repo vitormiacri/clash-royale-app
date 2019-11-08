@@ -39,6 +39,7 @@ export default function Players() {
       let playerTagSearch = '';
       setPlayer({});
       setLoading(1);
+      setError(0);
       setTopPlayers([]);
       if (tag) {
         playerTagSearch = tag;
@@ -46,11 +47,12 @@ export default function Players() {
         playerTagSearch = playerTag;
       }
       setPlayerTag(playerTagSearch);
-      const playerSearch = await api.get(`/player/${playerTagSearch}`);
-      const chestSearch = await api.get(`/player/${playerTagSearch}/chests`);
+      const response = await api.get(`/player/${playerTagSearch}`);
 
-      setChests(chestSearch.data);
-      setPlayer(playerSearch.data);
+      const { player: playerSearch, chests: chestSearch } = response.data;
+
+      setChests(chestSearch);
+      setPlayer(playerSearch);
     } catch (errors) {
       setError(1);
     } finally {
@@ -84,9 +86,11 @@ export default function Players() {
     try {
       setPlayer({});
       setLoading(1);
+      setError(0);
       setPlayerTag('');
-      const topPlayersSearch = await api.get(`/top/player/BR`);
-      setTopPlayers(topPlayersSearch.data.slice(0, 20));
+      const topPlayersSearch = await api.get(`/topPlayers`);
+
+      setTopPlayers(topPlayersSearch.data);
       setLoading(0);
     } catch (errors) {
       setError(1);
@@ -123,7 +127,7 @@ export default function Players() {
           </PlayerTrophies>
           <PlayerArena>
             <img
-              src={`https://royaleapi.github.io/cr-api-assets/arenas/arena${arena.arenaID}.png`}
+              src={`https://royaleapi.github.io/cr-api-assets/arenas/arena${arena.id}.png`}
               alt="Arena"
             />
             <div>{arena.name}</div>
@@ -135,8 +139,8 @@ export default function Players() {
               <span>#{clan.tag}</span>
             </div>
 
-            <span>Doações: {clan.donations}</span>
-            <span>Recebidas: {clan.donationsReceived}</span>
+            <span>Doações: {clan.donations || '0'}</span>
+            <span>Recebidas: {clan.donationsReceived || '0'}</span>
           </PlayerClan>
         </PlayerInfo>
         <PlayerDeck>
@@ -162,7 +166,11 @@ export default function Players() {
             {chests.upcoming.map((chest, index) => (
               <li key={index}>
                 <img
-                  src={`https://royaleapi.github.io/cr-api-assets/chests/chest-${chest}.png`}
+                  src={
+                    chest === 'golden'
+                      ? 'https://royaleapi.github.io/cr-api-assets/chests/chest-gold.png'
+                      : `https://royaleapi.github.io/cr-api-assets/chests/chest-${chest}.png`
+                  }
                   alt={`+ ${chest}`}
                 />
                 <span>{`+ ${index + 1}`}</span>

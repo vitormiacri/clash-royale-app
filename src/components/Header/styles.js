@@ -4,7 +4,7 @@ export const Container = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
 
   ul {
     list-style: none;

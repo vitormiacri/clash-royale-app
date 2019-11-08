@@ -25,6 +25,11 @@ export const MenuList = styled.div`
       border-radius: 5px;
       border: 1px solid #0e67c2;
 
+      &:hover {
+        transform: translateY(-5px);
+        transition: margin 0.2s;
+      }
+
       img {
         width: 80px;
         height: 80px;
